@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import CreateTweet from "./components/CreateTweet";
+import TweetList from "./components/TweetList";
+
 
 function App() {
+  //State
+  const [textInput, setTextInput] = useState("");
+  const [tweets, setTweets] = useState([]);
+  const [name, setName] = useState("Robin");
+  const message = "hello there sexy";
+
+  useEffect(() => {
+    console.log("hehehehehehe");
+  }, [textInput]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="text">
+        <h1>Twitter Lite</h1>
+        <CreateTweet textInput={textInput} setTextInput={setTextInput} tweets={tweets} setTweets={setTweets}/>
+        <TweetList name={name} tweets={tweets} setTweets={setTweets}/>
+      </div>
     </div>
   );
 }
+
+
+
 
 export default App;
